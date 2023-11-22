@@ -1,0 +1,47 @@
+import javax.swing.*;
+import java.awt.event.*;
+public class StateSelectionApp {
+private JFrame frame;
+private JComboBox<String> stateComboBox;
+public StateSelectionApp() {
+
+// Create the frame
+frame = new JFrame("State Selection");
+// Create an array of Indian states
+String[] states = { "Goa", "Gujarat",
+"Maharashtra","Manipur","Odisha", "Punjab"};
+// Create a JComboBox with the array of states
+stateComboBox = new JComboBox<>(states);
+// Create a button to display the selected state
+JButton showButton = new JButton("Show Selected State");
+showButton.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent e) {
+String selectedState = (String)
+
+stateComboBox.getSelectedItem();
+
+JOptionPane.showMessageDialog(frame, "Selected State: " +
+
+selectedState);
+}
+});
+// Set layout manager to default BorderLayout
+frame.setLayout(new java.awt.BorderLayout());
+// Add the JComboBox to the frame's content pane
+frame.add(stateComboBox, java.awt.BorderLayout.NORTH);
+// Add the button to display the selected state
+frame.add(showButton, java.awt.BorderLayout.SOUTH);
+// Set frame properties
+frame.setSize(300, 150);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisible(true);
+}
+public static void main(String[] args) {
+// Create the StateSelectionApp object
+SwingUtilities.invokeLater(new Runnable() {
+public void run() {
+new StateSelectionApp();
+}
+});
+}
+}
