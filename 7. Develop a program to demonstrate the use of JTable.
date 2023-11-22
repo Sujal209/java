@@ -1,0 +1,41 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+public class StudentTableDemo {
+private JFrame frame;
+private JTable studentTable;
+public StudentTableDemo() {
+// Create the frame
+frame = new JFrame("Student Table Demo");
+// Create column names
+String[] columnNames = {"Roll Number", "Name", "Age", "Grade"};
+// Create data for the table
+Object[][] data = {
+{1005 , "Sujal Chalke", 19 , "A"},
+{59 , "Soham Lohote", 25, "A"},
+{50 , "Atharva Naik ", 15, "A"},
+};
+// Create a DefaultTableModel with data and column names
+DefaultTableModel model = new DefaultTableModel(data,
+columnNames);
+// Create a JTable with the DefaultTableModel
+studentTable = new JTable(model);
+// Set layout manager to default BorderLayout
+frame.setLayout(new java.awt.BorderLayout());
+// Add the JTable to the frame's content pane inside a JScrollPane
+frame.add(new JScrollPane(studentTable),
+java.awt.BorderLayout.CENTER);
+
+// Set frame properties
+frame.setSize(400, 300);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisible(true);
+}
+public static void main(String[] args) {
+// Create the StudentTableDemo object
+SwingUtilities.invokeLater(new Runnable() {
+public void run() {
+new StudentTableDemo();
+}
+});
+}
+}
