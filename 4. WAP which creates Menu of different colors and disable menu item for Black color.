@@ -1,0 +1,64 @@
+import java.awt.*;
+import java.awt.event.*;
+public class ColorMenuApp extends Frame {
+private CheckboxMenuItem blackMenuItem;
+public ColorMenuApp() {
+// Create a menu bar
+MenuBar menuBar = new MenuBar();
+// Create a menu
+Menu colorMenu = new Menu("Colors");
+// Create color menu items
+CheckboxMenuItem redMenuItem = new CheckboxMenuItem("Red");
+CheckboxMenuItem greenMenuItem = new CheckboxMenuItem("Green");
+CheckboxMenuItem blueMenuItem = new CheckboxMenuItem("Blue");
+blackMenuItem = new CheckboxMenuItem("Black");
+// Add action listeners to handle color selection
+redMenuItem.addItemListener(new ColorItemListener(Color.RED));
+greenMenuItem.addItemListener(new
+ColorItemListener(Color.GREEN));
+blueMenuItem.addItemListener(new ColorItemListener(Color.BLUE));
+blackMenuItem.addItemListener(new
+ColorItemListener(Color.BLACK));
+// Add color menu items to the menu
+colorMenu.add(redMenuItem);
+colorMenu.add(greenMenuItem);
+colorMenu.add(blueMenuItem);
+colorMenu.add(blackMenuItem);
+// Add the color menu to the menu bar
+menuBar.add(colorMenu);
+// Set the menu bar for the frame
+setMenuBar(menuBar);
+// Set frame properties
+setTitle("Color Menu App");
+setSize(300, 200);
+setVisible(true);
+// Handle closing event
+
+addWindowListener(new WindowAdapter() {
+public void windowClosing(WindowEvent windowEvent) {
+System.exit(0);
+}
+});
+}
+private class ColorItemListener implements ItemListener {
+private Color color;
+public ColorItemListener(Color color) {
+this.color = color;
+}
+public void itemStateChanged(ItemEvent e) {
+if (e.getStateChange() == ItemEvent.SELECTED) {
+// Handle color selection
+setBackground(color);
+// Disable the black menu item
+if (color.equals(Color.BLACK)) {
+blackMenuItem.setEnabled(false);
+} else {
+blackMenuItem.setEnabled(true);
+}
+}
+}
+}
+public static void main(String[] args) {
+new ColorMenuApp();
+}
+}
