@@ -1,0 +1,60 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class MouseEventDemoApp extends JFrame implements MouseListener,
+MouseMotionListener {
+private JLabel statusLabel;
+public MouseEventDemoApp() {
+setTitle("Mouse Event Demo");
+setSize(400, 300);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// Create a label to display mouse event information
+statusLabel = new JLabel("No Mouse Event");
+// Add mouse listeners to the frame
+addMouseListener(this);
+addMouseMotionListener(this);
+// Set layout manager to default BorderLayout
+setLayout(new BorderLayout());
+// Add the label to the frame's content pane
+add(statusLabel, BorderLayout.SOUTH);
+
+setVisible(true);
+}
+public static void main(String[] args) {
+SwingUtilities.invokeLater(new Runnable() {
+public void run() {
+new MouseEventDemoApp();
+}
+});
+}
+// MouseListener methods
+public void mouseClicked(MouseEvent e) {
+statusLabel.setText("Mouse Clicked at (" + e.getX() + ", " +
+e.getY() + ")");
+}
+public void mousePressed(MouseEvent e) {
+statusLabel.setText("Mouse Pressed at (" + e.getX() + ", " +
+e.getY() + ")");
+}
+public void mouseReleased(MouseEvent e) {
+statusLabel.setText("Mouse Released at (" + e.getX() + ", " +
+e.getY() + ")");
+}
+public void mouseEntered(MouseEvent e) {
+statusLabel.setText("Mouse Entered at (" + e.getX() + ", " +
+e.getY() + ")");
+}
+public void mouseExited(MouseEvent e) {
+statusLabel.setText("Mouse Exited at (" + e.getX() + ", " + e.getY()
++ ")");
+}
+// MouseMotionListener methods
+public void mouseMoved(MouseEvent e) {
+statusLabel.setText("Mouse Moved at (" + e.getX() + ", " + e.getY()
++ ")");
+}
+public void mouseDragged(MouseEvent e) {
+statusLabel.setText("Mouse Dragged at (" + e.getX() + ", " +
+e.getY() + ")");
+}
+}
