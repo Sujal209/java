@@ -1,0 +1,38 @@
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Frame;
+public class BorderLayoutExample {
+public BorderLayoutExample() {
+// Create a frame
+Frame frame = new Frame("BorderLayout Example");
+// Create buttons
+Button buttonNorth = new Button("North");
+Button buttonSouth = new Button("South");
+Button buttonEast = new Button("East");
+Button buttonWest = new Button("West");
+Button buttonCenter = new Button("Center");
+// Set layout manager to BorderLayout
+frame.setLayout(new BorderLayout());
+// Add buttons to the frame with specified regions
+frame.add(buttonNorth, BorderLayout.NORTH);
+frame.add(buttonSouth, BorderLayout.SOUTH);
+frame.add(buttonEast, BorderLayout.EAST);
+frame.add(buttonWest, BorderLayout.WEST);
+frame.add(buttonCenter, BorderLayout.CENTER);
+// Set frame properties
+frame.setSize(400, 300);
+frame.setVisible(true);
+// Handle closing event
+frame.addWindowListener(new java.awt.event.WindowAdapter() {
+public void windowClosing(java.awt.event.WindowEvent
+
+windowEvent) {
+
+System.exit(0);
+}
+});
+}
+public static void main(String[] args) {
+new BorderLayoutExample();
+}
+}
