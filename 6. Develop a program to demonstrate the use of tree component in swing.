@@ -1,0 +1,45 @@
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+public class TreeDemoApp {
+private JFrame frame;
+public TreeDemoApp() {
+// Create the frame
+frame = new JFrame("Tree Demo");
+// Create a root node for the tree
+DefaultMutableTreeNode rootNode = new
+DefaultMutableTreeNode("Categories");
+// Create child nodes
+DefaultMutableTreeNode fruitsNode = new
+DefaultMutableTreeNode("Fruits");
+fruitsNode.add(new DefaultMutableTreeNode("Apple"));
+fruitsNode.add(new DefaultMutableTreeNode("Banana"));
+fruitsNode.add(new DefaultMutableTreeNode("Orange"));
+DefaultMutableTreeNode vegetablesNode = new
+DefaultMutableTreeNode("Vegetables");
+vegetablesNode.add(new DefaultMutableTreeNode("Carrot"));
+vegetablesNode.add(new DefaultMutableTreeNode("Broccoli"));
+vegetablesNode.add(new DefaultMutableTreeNode("Spinach"));
+// Add child nodes to the root node
+rootNode.add(fruitsNode);
+rootNode.add(vegetablesNode);
+// Create a JTree with the root node
+JTree tree = new JTree(rootNode);
+// Set layout manager to default BorderLayout
+frame.setLayout(new java.awt.BorderLayout());
+// Add the JTree to the frame's content pane
+frame.add(new JScrollPane(tree), java.awt.BorderLayout.CENTER);
+// Set frame properties
+frame.setSize(300, 300);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setVisible(true);
+}
+
+public static void main(String[] args) {
+// Create the TreeDemoApp object
+SwingUtilities.invokeLater(new Runnable() {
+public void run() {
+new TreeDemoApp();
+}
+});
+}
+}
